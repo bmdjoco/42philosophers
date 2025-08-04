@@ -6,11 +6,28 @@
 /*   By: bdjoco <bdjoco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 17:16:00 by bdjoco            #+#    #+#             */
-/*   Updated: 2025/08/04 17:35:42 by bdjoco           ###   ########.fr       */
+/*   Updated: 2025/08/05 00:12:13 by bdjoco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
+
+int	*init_fork(int nb_philo)
+{
+	int	i;
+	int	*fork;
+
+	i = 0;
+	fork = (int *) malloc(sizeof(int) * nb_philo);
+	if (!fork)
+		return (NULL);
+	while (i < nb_philo)
+	{
+		fork[i] = 1;
+		i++;
+	}
+	return (fork);
+}
 
 void	usage(void)
 {
