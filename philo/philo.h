@@ -6,7 +6,7 @@
 /*   By: bdjoco <bdjoco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 16:05:51 by bdjoco            #+#    #+#             */
-/*   Updated: 2025/08/05 16:51:51 by bdjoco           ###   ########.fr       */
+/*   Updated: 2025/08/05 19:42:30 by bdjoco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ typedef struct	s_philo
 	unsigned int	time_to_sleep;
 	unsigned int	time_to_die;
 	unsigned int	must_eat;
-	int				*l_fork;
-	int				*r_fork;
+	pthread_mutex_t	*l_fork;
+	pthread_mutex_t	*r_fork;
 }	t_philo;
 
 typedef struct	s_sim
 {
-	int		nb_philo;
-	int		*fork;
-	t_philo	*philo;
+	int				nb_philo;
+	pthread_mutex_t	*fork;
+	t_philo			*philo;
 }	t_sim;
 
 int		ft_atoi(const char *str);

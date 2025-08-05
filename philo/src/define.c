@@ -6,7 +6,7 @@
 /*   By: bdjoco <bdjoco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 23:31:33 by bdjoco            #+#    #+#             */
-/*   Updated: 2025/08/05 12:06:42 by bdjoco           ###   ########.fr       */
+/*   Updated: 2025/08/05 19:43:12 by bdjoco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,13 @@ t_philo	*define_philo(const char **av, int ac, int *fork)
 	return (philo);
 }
 
-static int	*define_fork(int nb)
+static pthread_mutex_t	*define_fork(int nb)
 {
-	int	*fork;
-	int	i;
+	pthread_mutex_t	*fork;
 
-	fork = malloc(sizeof(int) * nb);
+	fork = malloc(sizeof(pthread_mutex_t) * nb);
 	if (!fork)
 		return (NULL);
-	i = -1;
-	while (++i < nb)
-		fork[i] = 1;
 	return (fork);
 }
 
