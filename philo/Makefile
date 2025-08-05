@@ -6,7 +6,7 @@
 #    By: bdjoco <bdjoco@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/17 14:30:37 by bdjoco            #+#    #+#              #
-#    Updated: 2025/08/04 17:35:23 by bdjoco           ###   ########.fr        #
+#    Updated: 2025/08/05 16:55:10 by bdjoco           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ AR = ar rcs
 RM = rm -f
 
 SRC = src/philo.c \
+		src/define.c \
 		src/extra.c \
 		src/utils.c
 

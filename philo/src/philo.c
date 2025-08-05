@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extra.c                                            :+:      :+:    :+:   */
+/*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdjoco <bdjoco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/04 17:16:00 by bdjoco            #+#    #+#             */
-/*   Updated: 2025/08/05 00:12:13 by bdjoco           ###   ########.fr       */
+/*   Created: 2025/08/04 17:01:27 by bdjoco            #+#    #+#             */
+/*   Updated: 2025/08/05 12:07:11 by bdjoco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-int	*init_fork(int nb_philo)
+int	main(int ac, const char **av)
 {
-	int	i;
-	int	*fork;
+	t_sim	*simu;
 
-	i = 0;
-	fork = (int *) malloc(sizeof(int) * nb_philo);
-	if (!fork)
-		return (NULL);
-	while (i < nb_philo)
-	{
-		fork[i] = 1;
-		i++;
-	}
-	return (fork);
-}
-
-void	usage(void)
-{
-	putstr("Usage : ", 2);
-	putstr("number_of_philosophers time_to_die time_to_eat ", 2);
-	putstr("time_to_sleep [number_of_times", 2);
-	putstr("_each_philosopher_must_eat]\n", 2);
+	if (!(ac == 5 || ac == 6))
+		return (usage(), 1);
+	simu = define_sim(av, ac);
+	if(!simu)
+		return (1);
+	put_philo(simu);
+	return (free(simu->fork), free(simu->philo),
+		free(simu), 0);
 }
