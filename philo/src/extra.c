@@ -6,7 +6,7 @@
 /*   By: bdjoco <bdjoco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 17:16:00 by bdjoco            #+#    #+#             */
-/*   Updated: 2025/08/05 16:51:32 by bdjoco           ###   ########.fr       */
+/*   Updated: 2025/08/06 21:50:07 by bdjoco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ void	usage(void)
 	putstr("number_of_philosophers time_to_die time_to_eat ", 2);
 	putstr("time_to_sleep [number_of_times", 2);
 	putstr("_each_philosopher_must_eat]\n", 2);
+}
+
+int	msleep(unsigned int time)
+{
+	return (usleep(time * 1000));
 }
 
 long	get_time_milisec(void)

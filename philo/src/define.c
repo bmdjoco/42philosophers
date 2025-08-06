@@ -6,7 +6,7 @@
 /*   By: bdjoco <bdjoco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 23:31:33 by bdjoco            #+#    #+#             */
-/*   Updated: 2025/08/05 19:43:12 by bdjoco           ###   ########.fr       */
+/*   Updated: 2025/08/07 00:17:34 by bdjoco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_philo	*define_philo(const char **av, int ac, int *fork)
 		philo->time_to_die = ft_atoi(av[2]);
 		philo->time_to_die = ft_atoi(av[3]);
 		philo->time_to_die = ft_atoi(av[4]);
+		philo->num = i;
 		if (ac == 6)
 			philo->must_eat = ft_atoi(av[5]);
 		else
@@ -50,7 +51,20 @@ static pthread_mutex_t	*define_fork(int nb)
 	fork = malloc(sizeof(pthread_mutex_t) * nb);
 	if (!fork)
 		return (NULL);
+	pthread_mutex_init(fork, NULL);
 	return (fork);
+}
+
+static void	define_fork(pthread_mutex_t **fork, int nb)
+{
+	int	i;
+
+	i = -1;
+	while (++i < nb)
+	{
+		pthread_mutex_destroy(fork[i]);
+		free(fork[i]);
+	}
 }
 
 t_sim	*define_sim(const char **av, int ac)
