@@ -5,12 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdjoco <bdjoco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/04 17:09:52 by bdjoco            #+#    #+#             */
-/*   Updated: 2025/08/07 14:41:23 by bdjoco           ###   ########.fr       */
+/*   Created: 2025/08/07 14:38:36 by bdjoco            #+#    #+#             */
+/*   Updated: 2025/08/07 23:23:38 by bdjoco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
+
+void	free_philo(t_philo *philo)
+{
+	if (philo->is_dead)
+		free(philo->is_dead);
+	if (philo->is_end)
+		free(philo->is_end);
+	if (philo)
+		free(philo);
+}
+
+void	free_simu(t_sim *simu)
+{
+	if (simu->fork)
+		free(simu->fork);
+	if (simu->table)
+		free_philo(simu->table);
+	if (simu)
+		free(simu);
+}
 
 void	putstr(char *str, int fd)
 {
@@ -47,3 +67,5 @@ int	ft_atoi(const char *str)
 	}
 	return (sign * res);
 }
+
+
