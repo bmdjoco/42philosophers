@@ -6,7 +6,7 @@
 /*   By: bdjoco <bdjoco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:17:09 by bdjoco            #+#    #+#             */
-/*   Updated: 2025/08/08 00:43:31 by bdjoco           ###   ########.fr       */
+/*   Updated: 2025/08/09 15:07:19 by bdjoco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int ac, const char **av)
 		return (free(thread), 1);
 	nb = ft_atoi(av[1]);
 	while (++i < nb)
-		pthread_create(&thread[i], NULL, philo_routine, simu);
+		pthread_create(&thread[i], NULL, philo_routine, simu->table[i]);
 	i = -1;
 	while (++i < nb)
 		pthread_join(thread[i], NULL);

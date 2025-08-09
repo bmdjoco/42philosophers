@@ -6,7 +6,7 @@
 /*   By: bdjoco <bdjoco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 14:17:45 by bdjoco            #+#    #+#             */
-/*   Updated: 2025/08/08 00:35:15 by bdjoco           ###   ########.fr       */
+/*   Updated: 2025/08/09 15:37:16 by bdjoco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_philo
 	int				must_eat;
 	t_mutex			*is_dead;
 	t_mutex			*is_end;
-	unsigned int	time;
+	long			time;
 	unsigned int	time_to_eat;
 	unsigned int	time_to_die;
 	unsigned int	time_to_sleep;
@@ -42,8 +42,8 @@ typedef struct s_philo
 typedef struct s_sim
 {
 	int				nb_philo;
-	t_philo			*table;
-	pthread_mutex_t	*fork;
+	t_philo			**table;
+	pthread_mutex_t	**fork;
 }	t_sim;
 
 void	usage(void);
@@ -51,6 +51,8 @@ void	free_simu(t_sim *simu);
 void	putstr(char *str, int fd);
 void	*philo_routine(void *arg);
 void	*watcher_routine(void *arg);
+void	free_table(t_philo **table, int i);
+void	free_fork(pthread_mutex_t **fork, int i);
 
 long	get_time_milisec(void);
 
